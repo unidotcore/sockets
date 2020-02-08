@@ -16,7 +16,7 @@ object Client {
         var messagesCount: Int = 0
         val socket: Socket = new Socket(Host, Port)
         val serverInputStream: DataInputStream = new DataInputStream(socket.getInputStream())
-		val serverOutputStream: DataOutputStream = new DataOutputStream(socket.getOutputStream())
+        val serverOutputStream: DataOutputStream = new DataOutputStream(socket.getOutputStream())
         var data: String = ""
         try {
             breakable {
@@ -39,11 +39,11 @@ object Client {
                     println(s"[${messagesCount}] Received: ${data}")
                 }
             }
-		} finally {
+        } finally {
             serverInputStream.close
-			serverOutputStream.close
-			socket.close
-		}
+            serverOutputStream.close
+            socket.close
+        }
     }
 
 }

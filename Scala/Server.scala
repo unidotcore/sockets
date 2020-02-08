@@ -17,7 +17,7 @@ object Server {
         val client: Socket = server.accept
         println(s"Connected to: ${client.getRemoteSocketAddress}")
         val clientInputStream: DataInputStream = new DataInputStream(client.getInputStream())
-		val clientOutputStream: DataOutputStream = new DataOutputStream(client.getOutputStream())
+        val clientOutputStream: DataOutputStream = new DataOutputStream(client.getOutputStream())
         var data: String = ""
         try {
             breakable {
@@ -44,7 +44,7 @@ object Server {
             clientInputStream.close
             clientOutputStream.close
             client.close
-			server.close
+            server.close
         }
     }
 
