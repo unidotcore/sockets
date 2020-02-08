@@ -11,14 +11,14 @@ HOST = '127.0.0.1'
 
 def main():
 
-    import socket
+    import socket as skt
 
     messages_count = 0
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as skt:
-        skt.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        skt.bind((HOST, PORT))
-        skt.listen()
-        client, address = skt.accept()
+    with skt.socket(skt.AF_INET, skt.SOCK_STREAM) as socket:
+        socket.setsockopt(skt.SOL_SOCKET, skt.SO_REUSEADDR, 1)
+        socket.bind((HOST, PORT))
+        socket.listen()
+        client, address = socket.accept()
         print('Connected to:', address)
         with client:
             while True:

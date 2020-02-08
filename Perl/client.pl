@@ -21,7 +21,7 @@ my $socket = new IO::Socket::INET
 $socket->autoflush(1);
 
 while (1) {
-    print "Type something: ";
+    print 'Type something: ';
     my $data = <STDIN>;
     chomp $data;
     $socket->send(encode('ascii', $data));

@@ -30,7 +30,7 @@ while (1) {
     $data = decode('ascii', $data);
     last if ($data eq 'stop');
     print sprintf("[%d] Received: %s\n", ++$messages_count, $data);
-    print "Type something: ";
+    print 'Type something: ';
     $data = <STDIN>;
     chomp $data;
     $socket->send(encode('ascii', $data));

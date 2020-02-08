@@ -8,12 +8,12 @@ import java.nio.charset.StandardCharsets;
 class Client {
 
 	private static final int PORT = 8080;
-	private static final String IP = "127.0.0.1";
+	private static final String HOST = "127.0.0.1";
 
 	public static void main(String args[]) throws Exception {
 		byte[] buffer = new byte[1024];
 		int messagesCount = 0;
-		Socket socket = new Socket(IP, PORT);
+		Socket socket = new Socket(HOST, PORT);
 		DataInputStream serverInputStream = new DataInputStream(socket.getInputStream());
 		DataOutputStream serverOutputStream = new DataOutputStream(socket.getOutputStream());
 		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -37,6 +37,7 @@ class Client {
 				System.out.println(String.format("[%d] Received: %s", ++messagesCount, data));
 			}
 		} finally {
+			inputReader.close();
 			serverInputStream.close();
 			serverOutputStream.close();
 			socket.close();

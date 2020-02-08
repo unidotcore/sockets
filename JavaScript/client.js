@@ -11,15 +11,15 @@ const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
 });
-const client = new net.Socket();
+const socket = new net.Socket();
 const exit = () => {
     readline.close();
-    client.destroy();
+    socket.destroy();
     process.exit(0);
 };
 const send = () => readline.question('Type something: ', (input) => {
-    if (!client.write(input)) {
-        client.pause();
+    if (!socket.write(input)) {
+        socket.pause();
         return;
     }
     console.log(`[${++messagesCount}] Sent: ${input}`);
@@ -30,16 +30,16 @@ const send = () => readline.question('Type something: ', (input) => {
 
 let messagesCount = 0;
 
-client.connect(PORT, HOST);
-client.setEncoding('ascii');
-client.on('data', (data) => {
+socket.connect(PORT, HOST);
+socket.setEncoding('ascii');
+socket.on('data', (data) => {
     if (data === 'stop') {
         exit();
     }
 	console.log(`[${++messagesCount}] Received: ${data}`);
 	send();
 });
-client.on('drain', () => client.resume());
-client.on('end', () => exit());
+socket.on('drain', () => socket.resume());
+socket.on('end', () => exit());
 
 send();

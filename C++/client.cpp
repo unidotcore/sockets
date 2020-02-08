@@ -7,7 +7,7 @@
 #include <sys/socket.h>
 
 #define PORT 8080
-#define SERVER_IP "127.0.0.1"
+#define HOST "127.0.0.1"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ int main() {
 	// Converting port number from host byte order to network byte order (big-endian).
 	// See: https://en.wikipedia.org/wiki/Endianness
 	server_address.sin_port = htons(PORT);
-	if (inet_pton(AF_INET, SERVER_IP, &server_address.sin_addr) <= 0) {
+	if (inet_pton(AF_INET, HOST, &server_address.sin_addr) <= 0) {
 		cerr << "Unable to convert IP address to binary form." << endl;
 		return 1;
 	}

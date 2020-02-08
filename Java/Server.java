@@ -12,11 +12,11 @@ class Server {
 	public static void main(String args[]) throws Exception {
 		byte[] buffer = new byte[1024];
 		int messagesCount = 0;
-		ServerSocket socket = new ServerSocket(PORT);
-		Socket client = socket.accept();
-		System.out.println(String.format("Connected to: %s", client.getRemoteSocketAddress()));
-		DataInputStream clientInputStream = new DataInputStream(client.getInputStream());
-		DataOutputStream clientOutputStream = new DataOutputStream(client.getOutputStream());
+		ServerSocket server = new ServerSocket(PORT);
+		Socket socket = server.accept();
+		System.out.println(String.format("Connected to: %s", socket.getRemoteSocketAddress()));
+		DataInputStream clientInputStream = new DataInputStream(socket.getInputStream());
+		DataOutputStream clientOutputStream = new DataOutputStream(socket.getOutputStream());
 		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
 		String data;
 		try {
@@ -38,10 +38,11 @@ class Server {
 				}
 			}
 		} finally {
+			inputReader.close();
 			clientInputStream.close();
 			clientOutputStream.close();
-			client.close();
 			socket.close();
+			server.close();
 		}
 	}
 }

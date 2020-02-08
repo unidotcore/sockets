@@ -9,11 +9,11 @@ messages_count = 0
 
 socket = TCPSocket.new(HOST, PORT)
 loop do
-    print 'Type something: '
+    print('Type something: ')
     data = gets.chomp
     socket.write(data.encode('ASCII'))
     messages_count += 1
-    puts '[%d] Sent: %s' % [messages_count, data] + $/
+    puts('[%d] Sent: %s' % [messages_count, data] + $/)
     if data == 'stop'
         break
     end
@@ -22,6 +22,6 @@ loop do
         break
     end
     messages_count += 1
-    puts '[%d] Received: %s' % [messages_count, data] + $/
+    puts('[%d] Received: %s' % [messages_count, data] + $/)
 end
 socket.close
