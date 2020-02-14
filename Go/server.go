@@ -9,6 +9,7 @@ import "bufio"
 import "strings"
 
 const PORT uint16 = 8080
+const BUFFER_LENGTH uint16 = 1024
 
 func main() {
 	messagesCount := 0
@@ -17,7 +18,7 @@ func main() {
 	socket, _ := listener.Accept()
 	fmt.Println(fmt.Sprintf("Connected to: %s", socket.RemoteAddr()))
 	for {
-		buffer := make([]byte, 1024)
+		buffer := make([]byte, BUFFER_LENGTH)
 		bytesRead, err := socket.Read(buffer)
 		if err != nil {
 			fmt.Println("Unable to read from socket.")

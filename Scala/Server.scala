@@ -9,9 +9,10 @@ import java.nio.charset.StandardCharsets
 object Server {
 
     val Port: Int = 8080
+    val BufferLength: Int = 1024
 
     def main(args: Array[String]): Unit = {
-        val buffer: Array[Byte] = new Array[Byte](1024)
+        val buffer: Array[Byte] = new Array[Byte](BufferLength)
         var messagesCount: Int = 0
         val server: ServerSocket = new ServerSocket(Port)
         val client: Socket = server.accept

@@ -8,9 +8,10 @@ import java.nio.charset.StandardCharsets;
 class Server {
 
 	private static final int PORT = 8080;
+	private static final int BUFFER_LENGTH = 1024;
 
 	public static void main(String args[]) throws Exception {
-		byte[] buffer = new byte[1024];
+		byte[] buffer = new byte[BUFFER_LENGTH];
 		int messagesCount = 0;
 		ServerSocket server = new ServerSocket(PORT);
 		Socket socket = server.accept();

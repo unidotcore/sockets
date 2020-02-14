@@ -7,6 +7,7 @@ if sys.version_info[0] < 3:
 
 PORT = 8080
 HOST = '127.0.0.1'
+BUFFER_LENGTH = 1024
 
 
 def main():
@@ -23,7 +24,7 @@ def main():
                 break
             messages_count += 1
             print('[%d] Sent: %s' % (messages_count, data))
-            data = socket.recv(1024)
+            data = socket.recv(BUFFER_LENGTH)
             if not data:
                 break
             data = data.decode('ascii')

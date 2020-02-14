@@ -8,11 +8,12 @@
 
 #define PORT 8080
 #define HOST "127.0.0.1"
+#define BUFFER_LENGTH 1024
 
 using namespace std;
 
 int main() {
-	char buffer[1024];
+	char buffer[BUFFER_LENGTH];
 	// Initializing all buffer values to 0.
 	bzero(buffer, sizeof(buffer));
 	struct sockaddr_in server_address;

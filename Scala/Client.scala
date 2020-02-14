@@ -10,9 +10,10 @@ object Client {
 
     val Port: Int = 8080
     val Host: String = "127.0.0.1"
+    val BufferLength: Int = 1024
 
     def main(args: Array[String]): Unit = {
-        val buffer: Array[Byte] = new Array[Byte](1024)
+        val buffer: Array[Byte] = new Array[Byte](BufferLength)
         var messagesCount: Int = 0
         val socket: Socket = new Socket(Host, Port)
         val serverInputStream: DataInputStream = new DataInputStream(socket.getInputStream())

@@ -9,9 +9,10 @@ class Client {
 
 	private static final int PORT = 8080;
 	private static final String HOST = "127.0.0.1";
+	private static final int BUFFER_LENGTH = 1024;
 
 	public static void main(String args[]) throws Exception {
-		byte[] buffer = new byte[1024];
+		byte[] buffer = new byte[BUFFER_LENGTH];
 		int messagesCount = 0;
 		Socket socket = new Socket(HOST, PORT);
 		DataInputStream serverInputStream = new DataInputStream(socket.getInputStream());

@@ -4,6 +4,7 @@ require 'socket'
 
 PORT = 8080
 HOST = '127.0.0.1'
+BUFFER_LENGTH = 1024
 
 messages_count = 0
 
@@ -17,7 +18,7 @@ loop do
     if data == 'stop'
         break
     end
-    data = socket.recv(1024)
+    data = socket.recv(BUFFER_LENGTH)
     if data == 'stop'
         break
     end

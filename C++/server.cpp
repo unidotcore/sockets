@@ -7,12 +7,13 @@
 #include <netinet/in.h>
 
 #define PORT 8080
+#define BUFFER_LENGTH 1024
 #define BACKLOG_QUEUE_MAX_SIZE 3
 
 using namespace std;
 
 int main() {
-	char buffer[1024];
+	char buffer[BUFFER_LENGTH];
 	// Initializing all buffer values to 0.
 	bzero(buffer, sizeof(buffer));
 	struct sockaddr_in address;

@@ -7,6 +7,7 @@ if sys.version_info[0] < 3:
 
 PORT = 8080
 HOST = '127.0.0.1'
+BUFFER_LENGTH = 1024
 
 
 def main():
@@ -22,7 +23,7 @@ def main():
         print('Connected to:', address)
         with client:
             while True:
-                data = client.recv(1024)
+                data = client.recv(BUFFER_LENGTH)
                 if not data:
                     break
                 data = data.decode('ascii')

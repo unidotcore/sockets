@@ -6,6 +6,7 @@ use std::io::{stdin, stdout, Read, Write};
 
 const PORT: u16 = 8080;
 const HOST: &str = "127.0.0.1";
+const BUFFER_LENGTH: u16 = 1024;
 
 fn main() {
     match TcpStream::connect(format!("{}:{}", HOST, PORT)) {
@@ -15,7 +16,7 @@ fn main() {
 
     fn handle(mut socket: TcpStream) {
         let mut messages_count: u32 = 0;
-        let mut buffer: [u8; 1024] = [0 as u8; 1024];
+        let mut buffer: [u8; BUFFER_LENGTH] = [0 as u8; BUFFER_LENGTH];
         loop {
             print!("Type something: ");
             let _ = stdout().flush();

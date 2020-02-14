@@ -10,6 +10,7 @@ import "strings"
 
 const PORT uint16 = 8080
 const HOST string = "127.0.0.1"
+const BUFFER_LENGTH uint16 = 1024
 
 func main() {
 	messagesCount := 0
@@ -25,7 +26,7 @@ func main() {
 		if data == "stop" {
 			break;
 		}
-		buffer := make([]byte, 1024)
+		buffer := make([]byte, BUFFER_LENGTH)
 		bytesRead, err := socket.Read(buffer)
 		if err != nil {
 			fmt.Println("Unable to read from socket.")

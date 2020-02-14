@@ -4,6 +4,7 @@ require 'socket'
 
 PORT = 8080
 HOST = '127.0.0.1'
+BUFFER_LENGTH = 1024
 
 messages_count = 0
 
@@ -11,7 +12,7 @@ server = TCPServer.new(HOST, PORT)
 socket = server.accept
 puts('Connected to: %s:%d' % [socket.peeraddr[3], socket.peeraddr[1]] + $/)
 loop do
-    data = socket.recv(1024)
+    data = socket.recv(BUFFER_LENGTH)
     if data == 'stop'
         break
     end

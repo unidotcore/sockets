@@ -5,6 +5,7 @@ use std::io::{stdin, stdout, Read, Write};
 use std::net::{TcpListener, TcpStream, Shutdown};
 
 const PORT: u16 = 8080;
+const BUFFER_LENGTH: u16 = 1024;
 
 fn main() {
     let listener: TcpListener = TcpListener::bind(format!("0.0.0.0:{}", PORT)).unwrap();
@@ -19,7 +20,7 @@ fn main() {
 
     fn handle(mut socket: TcpStream) {
         let mut messages_count: u32 = 0;
-        let mut buffer: [u8; 1024] = [0 as u8; 1024];
+        let mut buffer: [u8; BUFFER_LENGTH] = [0 as u8; BUFFER_LENGTH];
         loop {
             match socket.read(&mut buffer) {
                 Ok(bytes_read) => {
